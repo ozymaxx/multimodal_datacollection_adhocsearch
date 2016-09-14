@@ -1,7 +1,8 @@
 #!/usr/bin/python
 # coding=utf-8
 
-from ComparisonPanel import *
+#from ComparisonPanel import *
+from SinglePanel import *
 import socket
 
 IP = '192.168.2.31'

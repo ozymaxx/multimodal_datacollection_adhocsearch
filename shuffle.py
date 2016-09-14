@@ -4,6 +4,7 @@
 import random
 import os
 import socket
+import copy
 
 from ButtonFrame import *
 
@@ -26,10 +27,15 @@ categories.append('/tackle/sliding')
 categories.append('/touch')
 
 videosroot = '../new_casestudy_videos'
+videosasked = []
 
 videoslist = []
 for category in categories:
 	vlist = os.listdir(videosroot+category)
+	random.seed()
+	rvlist = copy.copy(vlist)
+	random.shuffle(rvlist)
+	videosasked.append(videosroot+category+'/'+rvlist[0])
 	
 	for video in vlist:
 		videoslist.append(videosroot+category+'/'+video)
@@ -66,5 +72,5 @@ root.geometry('%dx%d+%d+%d' % (w, h, x, y))
 root.title('Video Deneyi')
 root.resizable(width=False,height=False)
 videosframe = VideoFrame(root,None,connection)
-buttonsframe = ButtonFrame(root,videoslist,videoids,videosframe)
+buttonsframe = ButtonFrame(root,videoslist,videoids,videosframe,videosasked,connection)
 root.mainloop()

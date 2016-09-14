@@ -54,8 +54,10 @@ class ComparisonPanel(Frame):
 			delims = data.split()
 			if delims[0] == 'CHANGETO':
 				self.updateOriginalVideo(delims[1])
+				print 'video changed to %s' % delims[1]
 			elif delims[0] == 'GUESS':
 				self.updateGuessedVideo(delims[1])
+				print 'a guess: %s' % delims[1]
 			else:
 				print 'Invalid query! <%s>' % data
 

@@ -1,6 +1,8 @@
 #!/usr/bin/python
 # coding=utf-8
 
+import tkMessageBox
+
 from Tkinter import *
 from vlc import *
 
@@ -43,14 +45,14 @@ class VideoFrame(Frame):
 			self.player.play()
 			print 'replayed ',self.videoaddr
 		else:
-			print 'no videos displayed'
+			tkMessageBox.showwarning('Video Seçimi','Öncelikle bir video seçin!')
 			
 	def askvideo(self,event):
 		if self.videoaddr != None:
 			print 'Is ',self.videoaddr,' the correct video?'
 			self.connection.send('GUESS %s' % self.videoaddr)
 		else:
-			print 'no videos displayed'
+			tkMessageBox.showwarning('Video Seçimi','Öncelikle bir video seçin!')
 		
 	def setvideo(self,videoaddr):
 		self.videoaddr = videoaddr

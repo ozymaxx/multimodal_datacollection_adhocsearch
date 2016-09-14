@@ -1,7 +1,6 @@
 #!/usr/bin/python
 # coding=utf-8
 
-import tkMessageBox
 from VideoFrame import *
 
 class ButtonFrame(Frame):

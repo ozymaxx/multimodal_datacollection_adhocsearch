@@ -5,6 +5,7 @@ import random
 import os
 import socket
 import copy
+import time
 
 from ButtonFrame import *
 
@@ -39,7 +40,12 @@ for category in categories:
 	
 	for video in vlist:
 		videoslist.append(videosroot+category+'/'+video)
-		
+	
+print 'Logging the video names...'	
+videolog = open('%f.videolog' % time.time(),'w')
+global videolog
+map(lambda x: videolog.write('%s\n' % x),videosasked)
+videolog.close()
 
 videoids = range(0,len(videoslist))
 random.seed()

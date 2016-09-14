@@ -43,5 +43,7 @@ class ButtonFrame(Frame):
 		if self.askedcount < len(self.videosasked):
 			self.connection.send('CHANGETO %s' % self.videosasked[self.askedcount])
 			self.askedcount = self.askedcount + 1
+			map(lambda x: x.configure(bg='#5ed658'),self.buttonslist)
+			self.vidframe.setvideo(None)
 		else:
 			tkMessageBox.showwarning('Videolar Tamamlandı','Çalışmada sorulması gereken tüm videoları sordunuz!')

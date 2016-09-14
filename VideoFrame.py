@@ -54,4 +54,6 @@ class VideoFrame(Frame):
 		
 	def setvideo(self,videoaddr):
 		self.videoaddr = videoaddr
-		self.replayvideo(None)
+		
+		if videoaddr != None:
+			self.replayvideo(None)

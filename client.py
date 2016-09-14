@@ -4,7 +4,7 @@
 from ComparisonPanel import *
 import socket
 
-IP = '172.20.32.166'
+IP = '192.168.2.31'
 PORT = 3440
 
 print 'Connecting to the station...'

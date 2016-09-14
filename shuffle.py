@@ -39,16 +39,16 @@ videoids = range(0,len(videoslist))
 random.seed()
 random.shuffle(videoids)
 
-print 'Waiting for the client...'
+print 'Waiting for client...'
 
 soc = socket.socket()
-host = '172.20.32.166'
+host = '192.168.2.31'
 portnum = 3440
 soc.bind((host,portnum))
 soc.listen(5)
 connection,address = soc.accept()
 
-print 'Client has connected! Preparing the UI...' 
+print 'Client has connected! Preparing UI...' 
 
 w = 1300
 h = 710

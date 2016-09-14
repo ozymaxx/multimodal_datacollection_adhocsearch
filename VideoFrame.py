@@ -43,14 +43,14 @@ class VideoFrame(Frame):
 			self.player.play()
 			print 'replayed ',self.videoaddr
 		else:
-			print 'video yok reis!!'
+			print 'no videos displayed'
 			
 	def askvideo(self,event):
 		if self.videoaddr != None:
-			print 'sorariz reis, ',self.videoaddr,' doğru mu diye?'
+			print 'Is ',self.videoaddr,' the correct video?'
 			self.connection.send('GUESS %s' % self.videoaddr)
 		else:
-			print 'soracak video mu var la??'
+			print 'no videos displayed'
 		
 	def setvideo(self,videoaddr):
 		self.videoaddr = videoaddr

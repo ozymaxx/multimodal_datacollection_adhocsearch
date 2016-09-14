@@ -1,6 +1,8 @@
 #!/usr/bin/python
 # coding=utf-8
 
+import thread
+
 from Tkinter import *
 from vlc import *
 
@@ -41,7 +43,7 @@ class ComparisonPanel(Frame):
 		self.comparedinstance = Instance()
 		self.compared_player = self.comparedinstance.media_player_new()
 		
-		self.after(1,self.listentostation)
+		thread.start_new_thread(self.listentostation, ())
 		
 	def listentostation(self):
 		while True:

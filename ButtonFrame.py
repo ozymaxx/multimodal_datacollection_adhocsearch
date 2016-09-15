@@ -4,7 +4,7 @@
 from VideoFrame import *
 
 class ButtonFrame(Frame):
-	def __init__(self,root,videoslist,videoids,vidframe,videosasked,connection):
+	def __init__(self,root,videoslist,videoids,vidframe,videosasked,connection,videolog):
 		Frame.__init__(self,root,width=260,height=710)
 		self.pack_propagate(0)
 		self.pack(side=LEFT)
@@ -17,6 +17,7 @@ class ButtonFrame(Frame):
 		self.videosasked = videosasked
 		self.askedcount = 0
 		self.connection = connection
+		self.videolog = videolog
 		
 		self.asknewbutton = Button(self,text='YENİ VİDEO SOR',width=15,height=2)
 		self.asknewbutton.bind('<Button-1>',self.sendNextVideo)
@@ -40,7 +41,9 @@ class ButtonFrame(Frame):
 		
 	def sendNextVideo(self,event):
 		if self.askedcount < len(self.videosasked):
-			self.connection.send('CHANGETO %s' % self.videosasked[self.askedcount])
+			query = 'CHANGETO %s' % self.videosasked[self.askedcount]
+			self.videolog.write('%s\n' % query)
+			self.connection.send(query)
 			self.askedcount = self.askedcount + 1
 			map(lambda x: x.configure(bg='#5ed658'),self.buttonslist)
 			self.vidframe.setvideo(None)

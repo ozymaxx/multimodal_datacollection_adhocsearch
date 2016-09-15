@@ -7,13 +7,14 @@ from Tkinter import *
 from vlc import *
 
 class VideoFrame(Frame):
-	def __init__(self,root,videoaddr,connection):
+	def __init__(self,root,videoaddr,connection,videolog):
 		Frame.__init__(self,root,width=1040,height=710)
 		self.pack_propagate(0)
 		self.pack(side=RIGHT)
 		
 		self.videoaddr = videoaddr
 		self.connection = connection
+		self.videolog = videolog
 		
 		self.replay = Button(self,text='TEKRAR OYNAT')
 		self.replay.bind('<Button-1>',self.replayvideo)
@@ -50,7 +51,9 @@ class VideoFrame(Frame):
 	def askvideo(self,event):
 		if self.videoaddr != None:
 			print 'Is ',self.videoaddr,' the correct video?'
-			self.connection.send('GUESS %s' % self.videoaddr)
+			query = 'GUESS %s' % self.videoaddr
+			self.videolog.write('%s\n' % query)
+			self.connection.send(query)
 		else:
 			tkMessageBox.showwarning('Video Seçimi','Öncelikle bir video seçin!')
 		

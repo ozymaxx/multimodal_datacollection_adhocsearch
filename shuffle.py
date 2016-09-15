@@ -41,11 +41,8 @@ for category in categories:
 	for video in vlist:
 		videoslist.append(videosroot+category+'/'+video)
 	
-print 'Logging the video names...'	
+
 videolog = open('%f.videolog' % time.time(),'w')
-global videolog
-map(lambda x: videolog.write('%s\n' % x),videosasked)
-videolog.close()
 
 videoids = range(0,len(videoslist))
 random.seed()
@@ -77,6 +74,19 @@ root.geometry('%dx%d+%d+%d' % (w, h, x, y))
 
 root.title('Video Deneyi')
 root.resizable(width=False,height=False)
-videosframe = VideoFrame(root,None,connection)
-buttonsframe = ButtonFrame(root,videoslist,videoids,videosframe,videosasked,connection)
+videosframe = VideoFrame(root,None,connection,videolog)
+buttonsframe = ButtonFrame(root,videoslist,videoids,videosframe,videosasked,connection,videolog)
+
+def on_close_window():
+	global connection
+	global soc
+	global root
+	global videolog
+	
+	videolog.close()
+	connection.close()
+	soc.close()
+	root.destroy()
+
+root.protocol('WM_DELETE_WINDOW',on_close_window)
 root.mainloop()

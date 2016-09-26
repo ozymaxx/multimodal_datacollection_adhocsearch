@@ -17,7 +17,7 @@ print 'Connected! Preparing the UI...'
 
 root = Tk()
 root.resizable(width=False,height=False)
-root.title('Video Deneyi')
+root.title('Futbolda Sesli Sinema')
 cpanel = ComparisonPanel(root,None,None,soc)
 
 root.mainloop()

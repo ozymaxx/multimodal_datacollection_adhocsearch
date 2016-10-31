@@ -7,8 +7,8 @@ from Tkinter import *
 from vlc import *
 
 class ComparisonPanel(Frame):
-	def __init__(self,parent,originalvideo,comparedvideo,soc):
-		Frame.__init__(self,parent,width=1370,height=840)
+	def __init__(self,parent,originalvideo,comparedvideo,soc,scwidth,scheight):
+		Frame.__init__(self,parent,width=scwidth,height=scheight)
 		self.pack_propagate(0)
 		self.pack()
 		
@@ -22,7 +22,7 @@ class ComparisonPanel(Frame):
 		
 		self.originalwatched = 0
 		
-		self.originalpanel = Frame(self,width=1370,height=840)
+		self.originalpanel = Frame(self,width=scwidth,height=scheight)
 		
 		self.originalpanel.pack_propagate(0)
 		

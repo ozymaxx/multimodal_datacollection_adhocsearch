@@ -5,7 +5,7 @@
 from SinglePanel import *
 import socket
 
-IP = '172.20.33.200'
+IP = '192.168.1.105'
 PORT = 3440
 
 print 'Connecting to the station...'
@@ -16,8 +16,12 @@ soc.connect((IP,PORT))
 print 'Connected! Preparing the UI...'
 
 root = Tk()
+
+scwidth = 1210
+scheight = 964
+
 root.resizable(width=False,height=False)
 root.title('Futbolda Sesli Sinema')
-cpanel = ComparisonPanel(root,None,None,soc)
+cpanel = ComparisonPanel(root,None,None,soc,scwidth,scheight)
 
 root.mainloop()

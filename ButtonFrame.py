@@ -19,7 +19,7 @@ class ButtonFrame(Frame):
 		self.connection = connection
 		self.videolog = videolog
 		
-		self.asknewbutton = Button(self,text='YENİ VİDEO SOR',width=15,height=2)
+		self.asknewbutton = Button(self,text='SOR',width=15,height=2)
 		self.asknewbutton.bind('<Button-1>',self.sendNextVideo)
 		self.asknewbutton.grid(row=0,column=0,columnspan=3)
 		

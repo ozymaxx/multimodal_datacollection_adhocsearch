@@ -5,7 +5,7 @@
 from SinglePanel import *
 import socket
 
-IP = '192.168.1.105'
+IP = '172.23.121.134'
 PORT = 3440
 
 print 'Connecting to the station...'

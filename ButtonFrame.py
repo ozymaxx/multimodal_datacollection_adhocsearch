@@ -41,6 +41,7 @@ class ButtonFrame(Frame):
 		
 	def sendNextVideo(self,event):
 		if self.askedcount < len(self.videosasked):
+                        os.system('/usr/bin/canberra-gtk-play --id="complete"')
 			query = 'CHANGETO %s' % self.videosasked[self.askedcount]
 			self.videolog.write('%s\n' % query)
 			self.connection.send(query)

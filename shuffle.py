@@ -38,7 +38,7 @@ random.shuffle(videoids)
 print 'Waiting for client...'
 
 soc = socket.socket()
-host = '192.168.1.105'
+host = '172.23.121.134'
 portnum = 3440
 soc.bind((host,portnum))
 soc.listen(5)

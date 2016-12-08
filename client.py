@@ -5,7 +5,13 @@
 from SinglePanel import *
 import socket
 
-IP = '172.23.121.134'
+if len(sys.argv) != 2:
+	print 'Usage: python client.py <ipaddr>'
+	exit()
+else:
+	IP = sys.argv[1]
+
+#IP = '192.168.1.102'
 PORT = 3440
 
 print 'Connecting to the station...'

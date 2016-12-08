@@ -51,7 +51,7 @@ class VideoFrame(Frame):
 			
 	def askvideo(self,event):
 		if self.videoaddr != None:
-                        os.system('/usr/bin/canberra-gtk-play --id="complete"')
+			os.system('/usr/bin/canberra-gtk-play --id="complete"')
 			print 'Is ',self.videoaddr,' the correct video?'
 			query = 'GUESS %s' % self.videoaddr
 			self.videolog.write('%s\n' % query)

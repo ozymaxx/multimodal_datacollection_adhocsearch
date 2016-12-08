@@ -32,16 +32,19 @@ class ButtonFrame(Frame):
 			ids = ids + 1
 			
 	def watchvideo(self,event):
-		ids = 0
-		while self.buttonslist[ids] != event.widget:
-			ids = ids + 1
-			
-		self.vidframe.setvideo(self.videoslist[self.videoids[ids]])
-		event.widget.configure(bg='#ffa496')
+		if self.askedcount == 0:
+			tkMessageBox.showerror('Video Sorulmadı','Daha herhangi bir video sormadınız, SOR butonuna tıklayıp sorabilirsiniz!')
+		else:
+			ids = 0
+			while self.buttonslist[ids] != event.widget:
+				ids = ids + 1
+				
+			self.vidframe.setvideo(self.videoslist[self.askedcount-1][self.videoids[self.askedcount-1][ids]])
+			event.widget.configure(bg='#ffa496')
 		
 	def sendNextVideo(self,event):
 		if self.askedcount < len(self.videosasked):
-                        os.system('/usr/bin/canberra-gtk-play --id="complete"')
+			os.system('/usr/bin/canberra-gtk-play --id="complete"')
 			query = 'CHANGETO %s' % self.videosasked[self.askedcount]
 			self.videolog.write('%s\n' % query)
 			self.connection.send(query)

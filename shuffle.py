@@ -6,19 +6,42 @@ import os
 import socket
 import copy
 import time
+import sys
 
 from ButtonFrame import *
 
 print 'Randomly shuffling the videos...'
 
+if len(sys.argv) != 2:
+	print 'Usage: python shuffle.py <ipaddr>'
+	exit()
+else:
+	host = sys.argv[1]
+
 categories = []
 categories.append('/warmup')
+categories.append('/corner')
+#categories.append('/freekick/close')
+#categories.append('/freekick/far')
+#categories.append('/heading')
+categories.append('/pass')
+#categories.append('/shoot/bicycle')
+#categories.append('/shoot/goal')
+#categories.append('/shoot/goalpost')
+#categories.append('/shoot/kept')
+#categories.append('/shoot/out')
+#categories.append('/tackle/foul')
+#categories.append('/tackle/poke')
+#categories.append('/tackle/sliding')
+#categories.append('/touch')
 
 videosroot = '../new_casestudy_videos'
 videosasked = []
 
 videoslist = []
+random_videoids = []
 for category in categories:
+	videoslist.append([])
 	vlist = os.listdir(videosroot+category)
 	random.seed()
 	rvlist = copy.copy(vlist)
@@ -26,19 +49,19 @@ for category in categories:
 	videosasked.append(videosroot+category+'/'+rvlist[0])
 	
 	for video in vlist:
-		videoslist.append(videosroot+category+'/'+video)
+		videoslist[len(videoslist)-1].append(videosroot+category+'/'+video)
+		
+	random_videoids.append(range(0,len(videoslist[len(videoslist)-1])))
+	random.seed()
+	random.shuffle(random_videoids[len(random_videoids)-1])
 	
 
 videolog = open('%f.videolog' % time.time(),'w')
 
-videoids = range(0,len(videoslist))
-random.seed()
-random.shuffle(videoids)
-
 print 'Waiting for client...'
 
 soc = socket.socket()
-host = '172.23.121.134'
+#host = '192.168.1.102'
 portnum = 3440
 soc.bind((host,portnum))
 soc.listen(5)
@@ -62,104 +85,7 @@ root.geometry('%dx%d+%d+%d' % (w, h, x, y))
 root.title('Video Deneyi')
 root.resizable(width=False,height=False)
 videosframe = VideoFrame(root,None,connection,videolog)
-buttonsframe = ButtonFrame(root,videoslist,videoids,videosframe,videosasked,connection,videolog)
-root.mainloop()
-
-# main part of the experiment-------------------------------------------
-categories = []
-#categories.append('/warmup')
-categories.append('/corner')
-#categories.append('/freekick/close')
-#categories.append('/freekick/far')
-#categories.append('/heading')
-#categories.append('/pass')
-#categories.append('/shoot/bicycle')
-#categories.append('/shoot/goal')
-#categories.append('/shoot/goalpost')
-#categories.append('/shoot/kept')
-#categories.append('/shoot/out')
-#categories.append('/tackle/foul')
-#categories.append('/tackle/poke')
-#categories.append('/tackle/sliding')
-#categories.append('/touch')
-
-
-videosroot = '../new_casestudy_videos'
-videosasked = []
-
-videoslist = []
-for category in categories:
-	vlist = os.listdir(videosroot+category)
-	random.seed()
-	rvlist = copy.copy(vlist)
-	random.shuffle(rvlist)
-	videosasked.append(videosroot+category+'/'+rvlist[0])
-	
-	for video in vlist:
-		videoslist.append(videosroot+category+'/'+video)
-	
-
-videolog = open('%f.videolog' % time.time(),'w')
-
-videoids = range(0,len(videoslist))
-random.seed()
-random.shuffle(videoids)
-
-root = Tk()
-root.geometry('%dx%d+%d+%d' % (w, h, x, y))
-
-root.title('Video Deneyi')
-root.resizable(width=False,height=False)
-videosframe = VideoFrame(root,None,connection,videolog)
-buttonsframe = ButtonFrame(root,videoslist,videoids,videosframe,videosasked,connection,videolog)
-root.mainloop()
-
-categories = []
-#categories.append('/warmup')
-#categories.append('/corner')
-#categories.append('/freekick/close')
-#categories.append('/freekick/far')
-#categories.append('/heading')
-#categories.append('/pass')
-categories.append('/shoot/bicycle')
-#categories.append('/shoot/goal')
-#categories.append('/shoot/goalpost')
-#categories.append('/shoot/kept')
-#categories.append('/shoot/out')
-#categories.append('/tackle/foul')
-#categories.append('/tackle/poke')
-#categories.append('/tackle/sliding')
-#categories.append('/touch')
-
-
-videosroot = '../new_casestudy_videos'
-videosasked = []
-
-videoslist = []
-for category in categories:
-	vlist = os.listdir(videosroot+category)
-	random.seed()
-	rvlist = copy.copy(vlist)
-	random.shuffle(rvlist)
-	videosasked.append(videosroot+category+'/'+rvlist[0])
-	
-	for video in vlist:
-		videoslist.append(videosroot+category+'/'+video)
-	
-
-videolog = open('%f.videolog' % time.time(),'w')
-
-videoids = range(0,len(videoslist))
-random.seed()
-random.shuffle(videoids)
-
-root = Tk()
-root.geometry('%dx%d+%d+%d' % (w, h, x, y))
-
-root.title('Video Deneyi')
-root.resizable(width=False,height=False)
-videosframe = VideoFrame(root,None,connection,videolog)
-buttonsframe = ButtonFrame(root,videoslist,videoids,videosframe,videosasked,connection,videolog)
+buttonsframe = ButtonFrame(root,videoslist,random_videoids,videosframe,videosasked,connection,videolog)
 
 def on_close_window():
 	global connection

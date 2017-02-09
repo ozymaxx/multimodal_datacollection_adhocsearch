@@ -56,7 +56,8 @@ class ComparisonPanel(Frame):
 	def updateOriginalVideo(self,addr):
 		self.original_player.set_xwindow(self.originalvideopanel.winfo_id())
 		
-		playlist = [self.aboutstartpath,addr,self.repeatvideopath,addr,self.repeatvideopath,addr,self.startvideopath]
+		#playlist = [self.aboutstartpath,addr,self.repeatvideopath,addr,self.repeatvideopath,addr,self.startvideopath]
+		playlist = [self.aboutstartpath,addr]#,self.repeatvideopath,addr,self.repeatvideopath,addr,self.startvideopath]
 		#playing = set([1,2,3,4])
 		for played in playlist:
 			#print 'playing %s' % played

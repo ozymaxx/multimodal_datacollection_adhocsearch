@@ -4,7 +4,7 @@
 from VideoFrame import *
 
 class ButtonFrame(Frame):
-	def __init__(self,root,videoslist,videoids,vidframe,videosasked,connection,videolog):
+	def __init__(self,root,videoslist,videoids,vidframe,videosasked,connection,videolog,numVideosPerCat):
 		Frame.__init__(self,root,width=260,height=710)
 		self.pack_propagate(0)
 		self.pack(side=LEFT)
@@ -23,7 +23,7 @@ class ButtonFrame(Frame):
 		self.asknewbutton.bind('<Button-1>',self.sendNextVideo)
 		self.asknewbutton.grid(row=0,column=0,columnspan=3)
 		
-		for vid in videoids:
+		for vid in range(0,numVideosPerCat):
 			buttonn = Button(self,text=str(ids+1),bg='#5ed658',width=5,height=2)
 			buttonn.bind('<Button-1>',self.watchvideo)
 			buttonn.grid(row=ids/3+1,column=ids%3)

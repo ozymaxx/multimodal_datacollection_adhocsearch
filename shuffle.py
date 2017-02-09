@@ -20,23 +20,24 @@ else:
 
 categories = []
 categories.append('/warmup')
-categories.append('/corner')
+#categories.append('/corner')
 #categories.append('/freekick/close')
 #categories.append('/freekick/far')
 #categories.append('/heading')
-categories.append('/pass')
-#categories.append('/shoot/bicycle')
-#categories.append('/shoot/goal')
-#categories.append('/shoot/goalpost')
-#categories.append('/shoot/kept')
-#categories.append('/shoot/out')
-#categories.append('/tackle/foul')
-#categories.append('/tackle/poke')
-#categories.append('/tackle/sliding')
+#categories.append('/pass')
+#categories.append('/bicycle')
+categories.append('/shoot/goal')
+categories.append('/shoot/on_goalpost')
+categories.append('/shoot/cleared_kept')
+categories.append('/shoot/out')
+categories.append('/tackle/foul')
+categories.append('/tackle/poke')
+categories.append('/tackle/sliding')
 #categories.append('/touch')
 
 videosroot = '../new_casestudy_videos'
 videosasked = []
+numVideosPerCat = 3
 
 videoslist = []
 random_videoids = []
@@ -85,7 +86,7 @@ root.geometry('%dx%d+%d+%d' % (w, h, x, y))
 root.title('Video Deneyi')
 root.resizable(width=False,height=False)
 videosframe = VideoFrame(root,None,connection,videolog)
-buttonsframe = ButtonFrame(root,videoslist,random_videoids,videosframe,videosasked,connection,videolog)
+buttonsframe = ButtonFrame(root,videoslist,random_videoids,videosframe,videosasked,connection,videolog,numVideosPerCat)
 
 def on_close_window():
 	global connection

@@ -5,7 +5,7 @@ This is a basic application to perform video search tasks in our case studies.
 * Python 2.7
 * A single computer with additional screen
 * A Linux distro with `canberra-gtk-play` utility (e.g. Ubuntu)
-* [Sample case study videos](https://github.com/ozymaxx/soccercasestudy_videos), together with transition videos ("Video is about to start!", "Repeat", and a blank video to clear the screen)
+* [Sample case study videos](https://github.com/ozymaxx/soccercasestudy_videos), together with transition videos ("Video is about to play!", "Again", and a blank video to clear the screen)
 * [VLC Player](http://www.videolan.org/vlc/index.tr.html)
 * [VLC Python wrapper](https://wiki.videolan.org/python_bindings)
 

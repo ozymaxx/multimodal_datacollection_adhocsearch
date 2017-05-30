@@ -1,4 +1,4 @@
-# Video Search Application for Case Studies
+# Video Search Application for Multi-Modal Data Collection Studies
 This is a basic application to perform video search tasks in our case studies. 
 
 ## Requirements

@@ -47,7 +47,7 @@ class VideoFrame(Frame):
 			self.player.play()
 			print 'replayed ',self.videoaddr
 		else:
-			tkMessageBox.showwarning('Video Seçimi','Öncelikle bir video seçin!')
+			tkMessageBox.showwarning('Video Selection','Please select a video clip!')
 			
 	def askvideo(self,event):
 		if self.videoaddr != None:
@@ -57,7 +57,7 @@ class VideoFrame(Frame):
 			self.videolog.write('%s\n' % query)
 			self.connection.send(query)
 		else:
-			tkMessageBox.showwarning('Video Seçimi','Öncelikle bir video seçin!')
+			tkMessageBox.showwarning('Video Selection','Please select a video clip!')
 		
 	def setvideo(self,videoaddr):
 		self.videoaddr = videoaddr

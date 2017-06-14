@@ -17,9 +17,9 @@ class VideoFrame(Frame):
 		self.connection = connection
 		self.videolog = videolog
 		
-		self.replay = Button(self,text='TEKRAR OYNAT')
+		self.replay = Button(self,text='RE-PLAY')
 		self.replay.bind('<Button-1>',self.replayvideo)
-		self.correct = Button(self,text='SOR BAKALIM BU MU?')
+		self.correct = Button(self,text='ASK VIDEO')
 		self.correct.bind('<Button-1>',self.askvideo)
 		
 		addrtext = ''

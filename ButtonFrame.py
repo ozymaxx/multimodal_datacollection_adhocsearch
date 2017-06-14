@@ -19,7 +19,7 @@ class ButtonFrame(Frame):
 		self.connection = connection
 		self.videolog = videolog
 		
-		self.asknewbutton = Button(self,text='SOR',width=15,height=2)
+		self.asknewbutton = Button(self,text='NEXT EVENT',width=15,height=2)
 		self.asknewbutton.bind('<Button-1>',self.sendNextVideo)
 		self.asknewbutton.grid(row=0,column=0,columnspan=3)
 		
@@ -33,7 +33,7 @@ class ButtonFrame(Frame):
 			
 	def watchvideo(self,event):
 		if self.askedcount == 0:
-			tkMessageBox.showerror('Video Sorulmadı','Daha herhangi bir video sormadınız, SOR butonuna tıklayıp sorabilirsiniz!')
+			tkMessageBox.showerror('No Video Asked','You have not asked any video clip. Please click NEXT EVENT to ask one.')
 		else:
 			ids = 0
 			while self.buttonslist[ids] != event.widget:
@@ -52,4 +52,4 @@ class ButtonFrame(Frame):
 			map(lambda x: x.configure(bg='#5ed658'),self.buttonslist)
 			self.vidframe.setvideo(None)
 		else:
-			tkMessageBox.showwarning('Videolar Tamamlandı','Çalışmada sorulması gereken tüm videoları sordunuz!')
+			tkMessageBox.showwarning('Task Finished','You have completed all events!')

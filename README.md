@@ -19,7 +19,7 @@ This is a basic application to perform video search tasks in our case studies.
 * Type `python shuffle.py <ipaddr>` on terminal where `<ipaddr>` is your IP address
 * Type `python client.py <ipaddr>` on terminal where `<ipaddr>` is your IP address
 * Now you'll see two windows. Extend the desktop to the additional screen, then drag the window in black to the additional screen
-* Now you're ready to use!
+* Now it's ready to use!
  * Press "SOR" button to pick a random video of the next category. Note that you'll hear a sound when you clicked on this button. This sound means the participant has started watching the video.
  * For experimenters: Once the participant described the video, click on numeric buttons to take a look at the videos. If you think you found the correct video, click on "SOR BAKALIM BU MU?" button to display it on the participant's side.
  
